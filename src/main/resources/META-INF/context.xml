@@ -1,0 +1,6 @@
+<Manager className="org.apache.catalina.session.PersistentManager">
+
+    <Store className="org.apache.catalina.session.FileStore"
+           directory='/Users/slava/Documents/Образование/ЧелГУ/Курс 2/ООП/file_system_viewer'/>
+
+</Manager>
