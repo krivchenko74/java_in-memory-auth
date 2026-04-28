@@ -2,7 +2,7 @@ package org.example.servlets;
 
 import com.google.gson.Gson;
 import org.example.accounts.AccountService;
-import org.example.accounts.UserProfile;
+import org.example.accounts.UserDataSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +31,7 @@ public class SessionsServlet extends HttpServlet {
             return;
         }
 
-        UserProfile profile = (UserProfile) session.getAttribute("user");
+        UserDataSet profile = (UserDataSet) session.getAttribute("user");
         if (profile == null) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
@@ -52,7 +52,7 @@ public class SessionsServlet extends HttpServlet {
             return;
         }
 
-        UserProfile profile = accountService.getUserByLogin(login);
+        UserDataSet profile = accountService.getUserByLogin(login);
         if (profile != null) {
             System.out.println(profile.getLogin());
         }

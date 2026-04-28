@@ -1,8 +1,7 @@
 package org.example.servlets;
 
-import com.google.gson.Gson;
 import org.example.accounts.AccountService;
-import org.example.accounts.UserProfile;
+import org.example.accounts.UserDataSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +15,6 @@ import java.io.IOException;
 @WebServlet("/users")
 public class UsersServlet extends HttpServlet {
     private AccountService accountService;
-    private final Gson gson = new Gson();
-
     @Override
     public void init() {
         this.accountService = AccountService.getInstance();
@@ -45,7 +42,7 @@ public class UsersServlet extends HttpServlet {
             userDir.mkdirs();
         }
 
-        UserProfile user = new UserProfile(login, pass, email);
+        UserDataSet user = new UserDataSet(login, pass, email);
         accountService.addNewUser(user);
 
         HttpSession session = req.getSession();

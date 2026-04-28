@@ -1,24 +1,20 @@
 package org.example.accounts;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.example.dao.UserDAO;
 
 public class AccountService {
     private static final AccountService instance = new AccountService();
     public static AccountService getInstance() {
         return instance;
     }
-    private final Map<String, UserProfile> loginToProfile;
 
-    public AccountService() {
-        loginToProfile = new HashMap<>();
+    private final UserDAO userDao = new UserDAO();
+
+    public void addNewUser(UserDataSet user) {
+        userDao.save(user);
     }
 
-    public void addNewUser(UserProfile user) {
-        loginToProfile.put(user.getLogin(), user);
-    }
-
-    public UserProfile getUserByLogin(String login) {
-        return loginToProfile.get(login);
+    public UserDataSet getUserByLogin(String login) {
+        return userDao.findByLogin(login);
     }
 }

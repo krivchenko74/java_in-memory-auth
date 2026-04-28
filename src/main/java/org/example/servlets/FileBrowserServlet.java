@@ -1,6 +1,6 @@
 package org.example.servlets;
 
-import org.example.accounts.UserProfile;
+import org.example.accounts.UserDataSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,8 @@ public class FileBrowserServlet extends HttpServlet {
             res.sendRedirect("/login.html");
             return;
         }
-        UserProfile user = (UserProfile) session.getAttribute("user");
+        System.out.println("Session ID: " + session.getId());
+        UserDataSet user = (UserDataSet) session.getAttribute("user");
 
         String root = "/Users/slava/filemanager/" + user.getLogin();
 

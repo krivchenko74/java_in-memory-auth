@@ -1,6 +1,6 @@
 package org.example.filters;
 
-import org.example.accounts.UserProfile;
+import org.example.accounts.UserDataSet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -20,8 +20,8 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         HttpSession session = request.getSession(false);
-        UserProfile user = (session != null)
-                ? (UserProfile) session.getAttribute("user")
+        UserDataSet user = (session != null)
+                ? (UserDataSet) session.getAttribute("user")
                 : null;
 
         if (user == null) {
